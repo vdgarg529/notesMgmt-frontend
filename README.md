@@ -1,0 +1,1 @@
+# notesMgmt-frontend

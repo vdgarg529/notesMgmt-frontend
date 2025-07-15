@@ -1,15 +1,40 @@
-import SpeechToText from './components/SpeechToText'
+// React Router based version of App.jsx
+
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Splash from './pages/Splash';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Home from './pages/Home';
+import AddNote from './pages/AddNote';
+import QueryNote from './pages/QueryNote';
+import QueryResult from './pages/QueryResult';
+import './App.css';
 
 function App() {
+  const [token, setToken] = useState('');
+  const [notes, setNotes] = useState([]);
+  const [aiResponse, setAiResponse] = useState('');
+  const [relatedNotes, setRelatedNotes] = useState([]);
+
+  const shared = { token, setToken, notes, setNotes, aiResponse, setAiResponse, relatedNotes, setRelatedNotes };
+
   return (
-    <div className="min-h-screen bg-gray-100 py-12">
-      <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-800">Speech to Text Converter</h1>
-        <p className="text-gray-600">Real-time browser speech recognition</p>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Splash />} />
+          <Route path="/login" element={<Login {...shared} />} />
+          <Route path="/register" element={<Register {...shared} />} />
+          <Route path="/home" element={<Home {...shared} />} />
+          <Route path="/add" element={<AddNote {...shared} />} />
+          <Route path="/query" element={<QueryNote {...shared} />} />
+          <Route path="/result" element={<QueryResult {...shared} />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
       </div>
-      <SpeechToText />
-    </div>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;

@@ -23,6 +23,7 @@ export const register = async (email: string, password: string) => {
   } catch (error) {
     throw error;
   }
+   
 };
 
 export const login = async (email: string, password: string) => {

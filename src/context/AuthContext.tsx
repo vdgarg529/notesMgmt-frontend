@@ -97,7 +97,8 @@
 
 
 // src/context/AuthContext.tsx
-import React, { createContext, useContext, useState, ReactNode, useMemo } from 'react';
+import React, { createContext, useContext, useState, useMemo } from 'react';
+import type { ReactNode } from 'react';
 
 interface AuthContextType {
   token: string | null;

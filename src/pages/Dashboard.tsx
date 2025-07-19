@@ -1,7 +1,7 @@
 // src/pages/Dashboard.tsx
 import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+// import { useNavigate } from 'react-router-dom';
+// import { useAuth } from '../context/AuthContext';
 import SpeechToTextInput from '../components/SpeechToTextInput';
 import NoteList from '../components/NoteList';
 import NoteCard from '../components/NoteCard';
@@ -9,12 +9,12 @@ import { addNote, queryNotes } from '../services/api';
 import Navigation from '../components/Navigation';
 
 const Dashboard: React.FC = () => {
-  const { token } = useAuth();
+  // const { token } = useAuth();
   const [inputText, setInputText] = useState('');
   const [results, setResults] = useState<any>(null);
   const [loading, setLoading] = useState({ save: false, search: false });
   const [saveSuccess, setSaveSuccess] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleAddNote = async () => {

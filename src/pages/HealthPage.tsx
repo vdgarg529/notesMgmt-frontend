@@ -1,16 +1,16 @@
 // src/pages/HealthPage.tsx
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { checkHealth } from '../services/api';
-import { useAuth } from '../context/AuthContext';
+// import { useAuth } from '../context/AuthContext';
 import Navigation from '../components/Navigation';
 
 const HealthPage: React.FC = () => {
   const [status, setStatus] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const navigate = useNavigate();
-  const { isAuthenticated } = useAuth();
+  // const navigate = useNavigate();
+  // const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     const fetchHealth = async () => {

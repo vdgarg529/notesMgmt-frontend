@@ -1,73 +1,69 @@
-# 📝 AI Note-Taking App (React + FastAPI)
+# React + TypeScript + Vite
 
-This is a mobile-first, modular monolith note-taking frontend app built with **React** and **Vite**, designed to work with a **FastAPI** backend. Users can register, log in, create notes using text or speech, and retrieve notes via natural language queries.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
----
+Currently, two official plugins are available:
 
-## 🚀 Features
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- 🔐 JWT-based Authentication (Register & Login)
-- 🎙️ Voice Input via Web Speech API (mic auto-starts)
-- 📝 Create & Save Notes (typed or spoken)
-- 🔍 AI Query Search (RAG-powered)
-- 📄 View AI responses + related notes
-- ⚙️ Fully modular and maintainable architecture
+## Expanding the ESLint configuration
 
----
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-## 📦 Tech Stack
+```js
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-- **Frontend**: React (with React Router, Web Speech API)
-- **Backend**: FastAPI (assumed running on `localhost:8000`)
-- **API communication**: REST + JWT Auth
-- **Tooling**: Vite, ESBuild
+      // Remove tseslint.configs.recommended and replace with this
+      ...tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      ...tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      ...tseslint.configs.stylisticTypeChecked,
 
----
-
-## 🛠 Setup Instructions
-
-### 1. Clone or Download the Code
-```bash
-git clone <repo-url>
-cd your-app
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-### 2. Install Dependencies
-```bash
-npm install
-npm install react-router-dom
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-
-### 3. Run the App
-```bash
-npm run dev
-```
-Visit: [http://localhost:5173](http://localhost:5173)
-
-### 4. Backend Setup (Required)
-Ensure your **FastAPI** backend is running locally at:
-```
-http://localhost:8000
-```
-
----
-
-## 🧪 Test Flow
-
-1. Register a new user
-2. Login → redirected to Home
-3. Add a note using mic or manual input → click Save
-4. Go back to Home → note appears at top
-5. Click search → speak or type your query → see response + related notes
-
----
-
-## 📌 Notes
-
-- Web Speech API works only in **secure context** (localhost or HTTPS)
-- This is a frontend-only repo. You’ll need the FastAPI backend to be active for full functionality
-- Tested on modern mobile browsers (Chrome, Firefox)
-
----
-
-

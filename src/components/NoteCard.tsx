@@ -1,5 +1,5 @@
 // src/components/NoteCard.tsx
-import React from 'react';
+// import React from 'react';
 
 interface Note {
   id: string;

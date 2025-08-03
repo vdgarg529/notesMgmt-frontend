@@ -12,7 +12,7 @@
 
 This is the **frontend** for the Notes Management App — a modern, AI-powered note-taking web application. It works with a FastAPI backend to provide secure login, note creation, semantic search, and intelligent summaries.
 
-> 🔗 [Backend Repository](https://github.com/vdgarg529/notesMgmt-backend)  
+> 🔗 [Backend Repository](https://github.com/vdgarg529/notesMgmt-Backend.git)  
 > 🚀 **Live Frontend**: [https://notesai-phi.vercel.app](https://notesai-phi.vercel.app)
 
 ---

@@ -108,11 +108,13 @@ Logout clears token and resets local state
 
 ---
 ## 👤 Author
+
 Vardan Garg
 GitHub: @vdgarg529
 
 Harsh Shrivastava
 GitHub: @HK-Srivastava
+
 ---
 ## 📷 Screenshots
 ![Login Page](screenshots/login.png)
